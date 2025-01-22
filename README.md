@@ -1,2 +1,2 @@
 # 2025-make-rocksdb-entire
-Make combined eukaryotic, bacterial, and archaeal RocksDB database
+Make a combined eukaryotic, bacterial, and archaeal RocksDB database for sourmash
