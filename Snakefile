@@ -14,6 +14,7 @@ rule default:
     input:
         f'entire-{DATE}.mf.csv',
         f'entire-{DATE}.lineages.csv',
+        f'entire-{DATE}.lineages.sqldb',
 
 rule index:
     input:
@@ -37,6 +38,16 @@ rule make_combined_lineages:
         sourmash tax prepare -F csv -o {output} -t {input}
     """
         
+rule make_combined_lineages_sqldb:
+    input:
+        EUKS_LINEAGES,
+        GTDB_LINEAGES,
+    output:
+        f'entire-{DATE}.lineages.sqldb',
+    shell: """
+        sourmash tax prepare -F sql -o {output} -t {input}
+    """
+
 rule make_rocksdb:
     input:
         'entire-{date}.mf.csv'
